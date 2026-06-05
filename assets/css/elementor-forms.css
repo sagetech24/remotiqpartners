@@ -1,0 +1,131 @@
+/**
+ * Elementor form styling to match RemotIQ theme UI.
+ * Targets forms inside .remotiq-form-panel on Partner and Join pages.
+ */
+
+.remotiq-form-panel .elementor-widget-form .elementor-form-fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.remotiq-form-panel .elementor-field-group {
+  margin-bottom: 0;
+}
+
+.remotiq-form-panel .elementor-field-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #16161D;
+  margin-bottom: 0.5rem;
+}
+
+.remotiq-form-panel .elementor-field-textual,
+.remotiq-form-panel .elementor-field-group .elementor-select-wrapper select,
+.remotiq-form-panel textarea.elementor-field-textual {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #16161D;
+  min-height: auto;
+}
+
+.remotiq-form-panel .elementor-field-textual:focus,
+.remotiq-form-panel textarea.elementor-field-textual:focus,
+.remotiq-form-panel .elementor-field-group .elementor-select-wrapper select:focus {
+  border-color: #ED2024;
+  outline: none;
+  box-shadow: 0 0 0 1px #ED2024;
+}
+
+.remotiq-form-panel textarea.elementor-field-textual {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.remotiq-form-panel .elementor-field-type-upload .elementor-field-label {
+  margin-bottom: 0.5rem;
+}
+
+.remotiq-form-panel .elementor-field-type-upload input[type="file"] {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 2px dashed #d1d5db;
+  background-color: #ffffff;
+  padding: 1.5rem 1rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.remotiq-form-panel .elementor-field-type-upload input[type="file"]:hover {
+  border-color: rgba(237, 32, 36, 0.5);
+}
+
+.remotiq-form-panel .elementor-button {
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: #FFC107 !important;
+  color: #111827 !important;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 1rem 3.5rem;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .remotiq-form-panel .elementor-button {
+    width: auto;
+    min-width: 160px;
+  }
+
+  .remotiq-form-panel .elementor-field-group.elementor-field-type-submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.25rem;
+  }
+}
+
+.remotiq-form-panel .elementor-button:hover,
+.remotiq-form-panel .elementor-button:focus {
+  background-color: #facc15 !important;
+  color: #111827 !important;
+}
+
+.remotiq-form-panel .elementor-message {
+  border-radius: 0.375rem;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #166534;
+  margin-bottom: 1rem;
+}
+
+.remotiq-form-panel .elementor-message.elementor-message-danger {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.remotiq-form-panel .elementor-field-group .elementor-mark-required .elementor-field-label:after {
+  content: '*';
+  color: #ED2024;
+  margin-left: 0.125rem;
+}
+
+.remotiq-form-panel .elementor-form .elementor-field-subgroup .elementor-field-option label {
+  font-size: 0.875rem;
+  color: #16161D;
+}
+
+/* Elementor canvas pages still inherit form styles when panel class is used */
+.elementor-widget-form .elementor-form .elementor-field-group:not(:last-child) {
+  margin-bottom: 0;
+}

@@ -1,0 +1,152 @@
+[x-cloak] { display: none !important; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+#header,
+#hero,
+#about-us,
+#our-values,
+#our-services,
+#partner-with-us,
+#were-hiring {
+  scroll-margin-top: 6rem;
+}
+
+#nav {
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+
+#nav.is-scrolled {
+  transform: scale(0.98);
+}
+
+.remotiq-form-panel .elementor-widget-form .elementor-form {
+  --e-form-field-border-color: #d1d5db;
+}
+
+@keyframes about-slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+html.js-about-animate #about-us .about-card-animate {
+  opacity: 0;
+}
+
+html.js-about-animate #about-us.is-visible .about-card-animate {
+  animation: about-slide-fade-in 0.55s ease forwards;
+}
+
+html.js-about-animate #about-us.is-visible .about-card-animate:nth-child(1) {
+  animation-delay: 0s;
+}
+
+html.js-about-animate #about-us.is-visible .about-card-animate:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+html.js-about-animate #about-us.is-visible .about-card-animate:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-about-animate #about-us .about-card-animate {
+    opacity: 1;
+  }
+
+  html.js-about-animate #about-us.is-visible .about-card-animate {
+    animation: none;
+  }
+}
+
+@keyframes values-slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html.js-values-animate #our-values .values-card-animate {
+  opacity: 0;
+}
+
+html.js-values-animate #our-values.is-visible .values-card-animate {
+  animation: values-slide-fade-in 0.55s ease forwards;
+  animation-delay: var(--values-card-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-values-animate #our-values .values-card-animate {
+    opacity: 1;
+  }
+
+  html.js-values-animate #our-values.is-visible .values-card-animate {
+    animation: none;
+  }
+}
+
+html.js-services-animate #our-services .services-card-animate {
+  opacity: 0;
+}
+
+html.js-services-animate #our-services.is-visible .services-card-animate {
+  animation: values-slide-fade-in 0.55s ease forwards;
+  animation-delay: var(--services-card-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-services-animate #our-services .services-card-animate {
+    opacity: 1;
+  }
+
+  html.js-services-animate #our-services.is-visible .services-card-animate {
+    animation: none;
+  }
+}
+
+/* Join Us thank-you — explicit width (not only Tailwind CDN utilities) */
+.remotiq-join-thank-you__inner {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.remotiq-join-thank-you__intro {
+  max-width: 60rem;
+}
+
+.remotiq-join-thank-you__divider,
+.remotiq-join-thank-you__confirmation {
+  max-width: 50rem;
+}
+
+/* Partner With Us thank-you */
+.remotiq-partner-thank-you__inner {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.remotiq-partner-thank-you__intro {
+  max-width: 60rem;
+}
+
+.remotiq-partner-thank-you__divider,
+.remotiq-partner-thank-you__confirmation {
+  max-width: 50rem;
+}
