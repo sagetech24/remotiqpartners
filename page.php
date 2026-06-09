@@ -1,18 +1,20 @@
 <?php
+/**
+ * Default page template.
+ */
 
 get_header();
-?>
-<main class="pt-16 lg:pt-20">
-  <?php
-  while (have_posts()) {
-      the_post();
-      ?>
-      <article <?php post_class(); ?>>
-        <?php the_content(); ?>
-      </article>
-      <?php
-  }
-  ?>
-</main>
-<?php
+
+while (have_posts()) {
+    the_post();
+
+    get_template_part('template-parts/sections/page-hero', null, [
+        'kicker' => remotiq_site_name(),
+        'title' => get_the_title(),
+        'description' => has_excerpt() ? wp_strip_all_tags(get_the_excerpt()) : '',
+    ]);
+
+    get_template_part('template-parts/content/page-body');
+}
+
 get_footer();

@@ -23,7 +23,7 @@ function remotiq_create_pages(): void
         'privacy-policy' => [
             'title' => 'Privacy Policy',
             'slug' => 'privacy-policy',
-            'content' => '<!-- wp:paragraph --><p>Privacy policy content goes here.</p><!-- /wp:paragraph -->',
+            'content' => remotiq_get_privacy_policy_placeholder_content(),
         ],
         'partner-with-us' => [
             'title' => 'Partner With Us',
@@ -94,6 +94,51 @@ function remotiq_create_pages(): void
         update_option('show_on_front', 'page');
         update_option('page_on_front', $page_ids['home']);
     }
+}
+
+function remotiq_get_privacy_policy_placeholder_content(): string
+{
+    return <<<'HTML'
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>RemotIQ Partners ("we", "us", or "our") respects your privacy. This policy explains what information we collect, how we use it, and the choices you have when you visit our website or submit a form.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Information We Collect</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We may collect information you provide directly, such as your name, email address, phone number, company name, and any messages or files you submit through our contact or application forms.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">How We Use Your Information</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We use your information to respond to inquiries, process applications, improve our services, and communicate with you about opportunities relevant to your request. We do not sell your personal information.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Data Security</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We implement reasonable technical and organizational measures to protect your information. No method of transmission over the internet is completely secure, and we cannot guarantee absolute security.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">Contact Us</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us through the details listed on our website.</p>
+<!-- /wp:paragraph -->
+HTML;
 }
 
 function remotiq_get_elementor_form_placeholder(string $type): string

@@ -1,0 +1,356 @@
+/**
+ * RemotIQ branded WordPress login screen.
+ * Scoped to body.login.remotiq-login only.
+ */
+
+body.login.remotiq-login {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background-color: #F0F0F0;
+  background-image: linear-gradient(#ED2024, #ED2024);
+  background-size: 100% 4px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2rem;
+  box-sizing: border-box;
+}
+
+body.login.remotiq-login #login {
+  width: 100%;
+  max-width: 420px;
+  margin: 0;
+  padding: 0;
+}
+
+body.login.remotiq-login #loginform,
+body.login.remotiq-login #lostpasswordform,
+body.login.remotiq-login #resetpassform,
+body.login.remotiq-login #registerform {
+  background: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 24px rgba(22, 22, 29, 0.08);
+  padding: 2rem;
+  margin-top: 0;
+}
+
+@media (min-width: 480px) {
+  body.login.remotiq-login #loginform,
+  body.login.remotiq-login #lostpasswordform,
+  body.login.remotiq-login #resetpassform,
+  body.login.remotiq-login #registerform {
+    padding: 2.5rem;
+  }
+}
+
+body.login.remotiq-login #login h1,
+body.login.remotiq-login #login h1.wp-login-logo {
+  width: 100%;
+  margin: 0 0 0.75rem;
+}
+
+body.login.remotiq-login #login h1 a,
+body.login.remotiq-login #login h1.wp-login-logo a {
+  background-image: var(--remotiq-login-logo);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 100%;
+  height: clamp(4.5rem, 28vw, 6rem);
+  margin: 0 0 1rem;
+  display: block;
+}
+
+@media (min-width: 480px) {
+  body.login.remotiq-login #login h1 a,
+  body.login.remotiq-login #login h1.wp-login-logo a {
+    height: clamp(3rem, 12vw, 6.5rem);
+  }
+}
+
+body.login.remotiq-login .remotiq-login-welcome {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 0 1.25rem;
+}
+
+body.login.remotiq-login #loginform p,
+body.login.remotiq-login #lostpasswordform p,
+body.login.remotiq-login #resetpassform p,
+body.login.remotiq-login #registerform p {
+  margin-bottom: 1.25rem;
+}
+
+body.login.remotiq-login #loginform label,
+body.login.remotiq-login #lostpasswordform label,
+body.login.remotiq-login #resetpassform label,
+body.login.remotiq-login #registerform label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #16161D;
+  margin-bottom: 0.5rem;
+}
+
+body.login.remotiq-login .login form .input,
+body.login.remotiq-login input[type="text"],
+body.login.remotiq-login input[type="password"],
+body.login.remotiq-login input[type="email"] {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #16161D;
+  box-shadow: none;
+  margin: 0;
+  min-height: auto;
+}
+
+body.login.remotiq-login .login form .input:focus,
+body.login.remotiq-login input[type="text"]:focus,
+body.login.remotiq-login input[type="password"]:focus,
+body.login.remotiq-login input[type="email"]:focus {
+  border-color: #ED2024;
+  outline: none;
+  box-shadow: 0 0 0 1px #ED2024;
+}
+
+body.login.remotiq-login #loginform .user-pass-wrap {
+  margin-bottom: 1.25rem;
+}
+
+body.login.remotiq-login .button.wp-hide-pw .dashicons {
+  color: #ED2024;
+}
+
+body.login.remotiq-login .button.wp-hide-pw:hover .dashicons,
+body.login.remotiq-login .button.wp-hide-pw:focus .dashicons,
+body.login.remotiq-login .button.wp-hide-pw:active .dashicons {
+  color: #c41a1d;
+}
+
+body.login.remotiq-login .button.wp-hide-pw:focus {
+  border-color: #ED2024;
+  box-shadow: 0 0 0 1px #ED2024;
+}
+
+body.login.remotiq-login .forgetmenot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem !important;
+}
+
+body.login.remotiq-login .forgetmenot input[type="checkbox"] {
+  margin: 0;
+  flex-shrink: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  position: relative;
+}
+
+body.login.remotiq-login .forgetmenot input[type="checkbox"]:focus,
+body.login.remotiq-login .forgetmenot input[type="checkbox"]:active {
+  border-color: #ED2024;
+  outline: none;
+  box-shadow: 0 0 0 1px #ED2024;
+}
+
+body.login.remotiq-login .forgetmenot input[type="checkbox"]:checked {
+  border-color: #ED2024;
+  background-color: #ffffff;
+}
+
+body.login.remotiq-login .forgetmenot input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 0.25rem;
+  height: 0.5rem;
+  border: solid #ED2024;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+body.login.remotiq-login .forgetmenot label {
+  display: inline;
+  margin-bottom: 0 !important;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #16161D;
+  line-height: 1.25;
+}
+
+body.login.remotiq-login #nav {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+body.login.remotiq-login #nav a {
+  font-size: 0.875rem;
+  color: #ED2024;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+body.login.remotiq-login #nav a:hover,
+body.login.remotiq-login #nav a:focus {
+  color: #c41a1d;
+}
+
+body.login.remotiq-login #backtoblog {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+body.login.remotiq-login #backtoblog a {
+  font-size: 0.875rem;
+  color: #16161D;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+body.login.remotiq-login #backtoblog a:hover,
+body.login.remotiq-login #backtoblog a:focus {
+  color: #ED2024;
+}
+
+body.login.remotiq-login .wp-core-ui .button-primary {
+  width: 100%;
+  float: none;
+  border-radius: 0.375rem;
+  background-color: #FFC107 !important;
+  border-color: #FFC107 !important;
+  color: #16161D !important;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 0.875rem 1.5rem;
+  min-height: auto;
+  height: auto;
+  line-height: 1.4;
+  text-shadow: none;
+  box-shadow: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+body.login.remotiq-login .wp-core-ui .button-primary:hover,
+body.login.remotiq-login .wp-core-ui .button-primary:focus {
+  background-color: #facc15 !important;
+  border-color: #facc15 !important;
+  color: #16161D !important;
+  box-shadow: none;
+}
+
+body.login.remotiq-login #loginform .button-primary {
+  border-radius: 9999px;
+  padding: 0 1rem;
+  background-color: #ED2024 !important;
+  border-color: #ED2024 !important;
+  color: #ffffff !important;
+}
+
+body.login.remotiq-login #loginform .button-primary:hover,
+body.login.remotiq-login #loginform .button-primary:focus {
+  background-color: #c41a1d !important;
+  border-color: #c41a1d !important;
+  color: #ffffff !important;
+}
+
+body.login.remotiq-login .wp-core-ui .button-primary:focus {
+  outline: 2px solid #ED2024;
+  outline-offset: 2px;
+}
+
+body.login.remotiq-login #loginform .button-primary:focus {
+  outline: 2px solid #16161D;
+}
+
+body.login.remotiq-login #login_error,
+body.login.remotiq-login .login .message,
+body.login.remotiq-login .login .success {
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  box-shadow: none;
+}
+
+body.login.remotiq-login #login_error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ED2024;
+  color: #991b1b;
+}
+
+body.login.remotiq-login .login .message {
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-left: 4px solid #26A69A;
+  color: #0c4a6e;
+}
+
+body.login.remotiq-login .login .success {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #26A69A;
+  color: #166534;
+}
+
+body.login.remotiq-login .privacy-policy-page-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+body.login.remotiq-login .privacy-policy-page-link a {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+body.login.remotiq-login .privacy-policy-page-link a:hover {
+  color: #ED2024;
+}
+
+body.login.remotiq-login .language-switcher {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+body.login.remotiq-login .language-switcher label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+body.login.remotiq-login .language-switcher select {
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.5rem;
+}
+
+body.login.remotiq-login .language-switcher select:focus {
+  border-color: #ED2024;
+  outline: none;
+  box-shadow: 0 0 0 1px #ED2024;
+}

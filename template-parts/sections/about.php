@@ -39,7 +39,7 @@ $about_cta_text_color = get_theme_mod('remotiq_about_cta_text_color', '#16161D')
     <div class="grid lg:grid-cols-2 md:grid-cols-2 gap-12 lg:gap-10 items-center">
       <div class="about-cards flex flex-col gap-10 lg:pr-12 lg:border-r-4 md:pr-12 md:border-r-4" style="<?php echo esc_attr('border-color: ' . $about_border_color . ';'); ?>">
         <?php foreach ($about_cards as $index => $card) : ?>
-          <div class="about-card-animate rounded p-10 lg:p-8 <?php echo $index === 2 ? 'p-6' : ''; ?>" style="<?php echo esc_attr('background-color: ' . $card['bg_color'] . '; color: ' . $card['text_color'] . ';'); ?>">
+          <div class="about-card-animate rounded p-10 lg:p-8" style="<?php echo esc_attr('background-color: ' . $card['bg_color'] . '; color: ' . $card['text_color'] . ';'); ?>">
             <h3 class="text-2xl font-semibold mb-2"><?php echo esc_html($card['title']); ?></h3>
             <p class="text-sm leading-relaxed"><?php echo esc_html($card['text']); ?></p>
           </div>

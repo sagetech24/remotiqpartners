@@ -2,7 +2,7 @@
 
 $partner_url = remotiq_page_url('partner-with-us');
 $partner_button_label = get_theme_mod('remotiq_partner_button_label', 'Partner With Us');
-$partner_button_classes = remotiq_get_partner_button_theme_classes();
+$partner_button_style = remotiq_get_partner_button_style();
 ?>
 <nav id="nav" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
   <div class="flex items-center justify-between lg:h-[100px] h-[75px]">
@@ -39,7 +39,7 @@ $partner_button_classes = remotiq_get_partner_button_theme_classes();
       <?php endif; ?>
 
       <div class="flex items-center gap-3">
-        <a href="<?php echo esc_url($partner_url); ?>" class="hidden sm:inline-flex px-5 py-2.5 rounded-md text-sm font-bold transition-colors <?php echo esc_attr($partner_button_classes); ?>">
+        <a href="<?php echo esc_url($partner_url); ?>" class="hidden sm:inline-flex px-5 py-2.5 rounded-md text-sm font-bold hover:opacity-90 transition-all" style="<?php echo esc_attr($partner_button_style); ?>">
           <?php echo esc_html($partner_button_label); ?>
         </a>
         <button type="button" id="menu-toggle" class="lg:hidden p-2 rounded-md text-brand-dark hover:bg-gray-100" aria-label="Open menu" aria-expanded="false">
@@ -51,13 +51,13 @@ $partner_button_classes = remotiq_get_partner_button_theme_classes();
   </div>
 
   <div id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-gray-100">
-    <div class="flex flex-col gap-1 pt-3">
+    <div class="flex flex-col space-y-8 pt-6">
       <?php if (has_nav_menu('primary')) : ?>
         <?php
         wp_nav_menu([
             'theme_location' => 'primary',
             'container' => false,
-            'menu_class' => 'flex flex-col gap-1',
+            'menu_class' => 'flex flex-col gap-4',
             'fallback_cb' => false,
             'depth' => 1,
             'link_before' => '',
@@ -66,12 +66,12 @@ $partner_button_classes = remotiq_get_partner_button_theme_classes();
         ]);
         ?>
       <?php else : ?>
-        <a href="<?php echo esc_url(remotiq_home_url('about-us')); ?>" class="mobile-link px-3 py-2 rounded-md text-brand-dark hover:bg-gray-50 font-medium">About Us</a>
-        <a href="<?php echo esc_url(remotiq_home_url('our-values')); ?>" class="mobile-link px-3 py-2 rounded-md text-brand-dark hover:bg-gray-50 font-medium">Our Values</a>
-        <a href="<?php echo esc_url(remotiq_home_url('our-services')); ?>" class="mobile-link px-3 py-2 rounded-md text-brand-dark hover:bg-gray-50 font-medium">Our Services</a>
-        <a href="<?php echo esc_url(remotiq_home_url('were-hiring')); ?>" class="mobile-link px-3 py-2 rounded-md text-brand-dark hover:bg-gray-50 font-medium">We're Hiring</a>
+        <a href="<?php echo esc_url(remotiq_home_url('about-us')); ?>" class="mobile-link px-6 py-4 rounded-md text-brand-dark hover:bg-gray-50 font-medium">About Us</a>
+        <a href="<?php echo esc_url(remotiq_home_url('our-values')); ?>" class="mobile-link px-6 py-4 rounded-md text-brand-dark hover:bg-gray-50 font-medium">Our Values</a>
+        <a href="<?php echo esc_url(remotiq_home_url('our-services')); ?>" class="mobile-link px-6 py-4 rounded-md text-brand-dark hover:bg-gray-50 font-medium">Our Services</a>
+        <a href="<?php echo esc_url(remotiq_home_url('were-hiring')); ?>" class="mobile-link px-6 py-4 rounded-md text-brand-dark hover:bg-gray-50 font-medium">We're Hiring</a>
       <?php endif; ?>
-      <a href="<?php echo esc_url($partner_url); ?>" class="mobile-link mt-2 mx-3 py-2.5 rounded-md text-center font-bold transition-colors <?php echo esc_attr($partner_button_classes); ?>">
+      <a href="<?php echo esc_url($partner_url); ?>" class="mobile-link mt-4 mx-6 py-5 rounded-md text-center font-bold hover:opacity-90 transition-all" style="<?php echo esc_attr($partner_button_style); ?>">
         <?php echo esc_html($partner_button_label); ?>
       </a>
     </div>

@@ -77,22 +77,25 @@ function remotiq_customize_register(WP_Customize_Manager $wp_customize): void
         'type' => 'text',
     ]);
 
-    $wp_customize->add_setting('remotiq_partner_button_theme', [
-        'default' => 'red',
-        'sanitize_callback' => 'remotiq_sanitize_partner_button_theme',
+    $wp_customize->add_setting('remotiq_partner_button_bg_color', [
+        'default' => '#ED2024',
+        'sanitize_callback' => 'sanitize_hex_color',
     ]);
 
-    $wp_customize->add_control('remotiq_partner_button_theme', [
-        'label' => __('Partner Button Color Theme', 'remotiq-partners'),
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'remotiq_partner_button_bg_color', [
+        'label' => __('Partner Button Color', 'remotiq-partners'),
         'section' => 'remotiq_header_options',
-        'type' => 'select',
-        'choices' => [
-            'red' => __('Red', 'remotiq-partners'),
-            'yellow' => __('Yellow', 'remotiq-partners'),
-            'teal' => __('Teal', 'remotiq-partners'),
-            'dark' => __('Dark', 'remotiq-partners'),
-        ],
+    ]));
+
+    $wp_customize->add_setting('remotiq_partner_button_text_color', [
+        'default' => '#FFFFFF',
+        'sanitize_callback' => 'sanitize_hex_color',
     ]);
+
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'remotiq_partner_button_text_color', [
+        'label' => __('Partner Button Text Color', 'remotiq-partners'),
+        'section' => 'remotiq_header_options',
+    ]));
 
     $wp_customize->add_section('remotiq_hero_options', [
         'title' => __('Hero Options', 'remotiq-partners'),
@@ -1606,29 +1609,46 @@ function remotiq_customize_preview_url(string $preview_url): string
 }
 add_filter('customize_preview_url', 'remotiq_customize_preview_url');
 
-function remotiq_sanitize_partner_button_theme(string $value): string
+/**
+ * @return array{bg: string, text: string}
+ */
+function remotiq_get_partner_button_colors(): array
 {
-    $allowed_themes = ['red', 'yellow', 'teal', 'dark'];
+    $bg = get_theme_mod('remotiq_partner_button_bg_color');
+    $text = get_theme_mod('remotiq_partner_button_text_color');
 
-    if (!in_array($value, $allowed_themes, true)) {
-        return 'red';
-    }
-
-    return $value;
-}
-
-function remotiq_get_partner_button_theme_classes(?string $theme = null): string
-{
-    $theme_key = remotiq_sanitize_partner_button_theme((string) ($theme ?? get_theme_mod('remotiq_partner_button_theme', 'red')));
-
-    $theme_classes = [
-        'red' => 'bg-brand-red text-white hover:bg-red-700',
-        'yellow' => 'bg-brand-yellow text-brand-dark hover:bg-yellow-400',
-        'teal' => 'bg-brand-teal text-white hover:bg-teal-700',
-        'dark' => 'bg-brand-dark text-white hover:bg-black',
+    $legacy_themes = [
+        'red' => ['bg' => '#ED2024', 'text' => '#FFFFFF'],
+        'yellow' => ['bg' => '#FFC107', 'text' => '#16161D'],
+        'teal' => ['bg' => '#26A69A', 'text' => '#FFFFFF'],
+        'dark' => ['bg' => '#16161D', 'text' => '#FFFFFF'],
     ];
 
-    return $theme_classes[$theme_key] ?? $theme_classes['red'];
+    if (!is_string($bg) || $bg === '') {
+        $legacy_theme = (string) get_theme_mod('remotiq_partner_button_theme', 'red');
+        $bg = $legacy_themes[$legacy_theme]['bg'] ?? '#ED2024';
+    }
+
+    if (!is_string($text) || $text === '') {
+        $legacy_theme = (string) get_theme_mod('remotiq_partner_button_theme', 'red');
+        $text = $legacy_themes[$legacy_theme]['text'] ?? '#FFFFFF';
+    }
+
+    return [
+        'bg' => $bg,
+        'text' => $text,
+    ];
+}
+
+function remotiq_get_partner_button_style(): string
+{
+    $colors = remotiq_get_partner_button_colors();
+
+    return sprintf(
+        'background-color: %s; color: %s;',
+        esc_attr($colors['bg']),
+        esc_attr($colors['text'])
+    );
 }
 
 function remotiq_enqueue_assets(): void
@@ -1738,7 +1758,7 @@ function remotiq_nav_menu_link_attributes(array $atts, $menu_item, $args, $depth
 
     if (isset($args->theme_location) && $args->theme_location === 'primary') {
         if (isset($args->menu_class) && str_contains((string) $args->menu_class, 'flex flex-col')) {
-            $base_class = 'mobile-link px-3 py-2 rounded-md text-brand-dark hover:bg-gray-50 font-medium';
+            $base_class = 'mobile-link px-6 py-4 rounded-md text-brand-dark hover:bg-gray-50 font-medium';
         }
 
         $atts['class'] = trim(($atts['class'] ?? '') . ' ' . $base_class);
