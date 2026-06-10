@@ -45,7 +45,7 @@ $card_style = sprintf('background-color: %s; color: %s;', $stewardship_card_bg_c
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <?php foreach ($pillars as $pillar) : ?>
-        <article class="rounded p-6 lg:p-8 text-left" style="<?php echo esc_attr($card_style); ?>">
+        <article class="rounded p-10 lg:p-8 text-left" style="<?php echo esc_attr($card_style); ?>">
           <div class="flex items-center gap-3 mb-4">
             <img src="<?php echo esc_url($pillar['icon_url']); ?>" alt="<?php echo esc_attr($pillar['alt']); ?>" class="w-8 h-8 shrink-0">
             <h3 class="font-bold text-3xl"><?php echo esc_html($pillar['title']); ?></h3>

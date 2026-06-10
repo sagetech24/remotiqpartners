@@ -72,7 +72,7 @@ get_template_part('template-parts/sections/page-hero', null, [
     <?php else : ?>
       <div class="max-w-xl mx-auto text-center py-12 lg:py-16">
         <p class="text-2xl font-bold text-brand-dark mb-3">
-          <?php esc_html_e('No posts found', 'remotiq-partners'); ?>
+          <?php esc_html_e('Page Not Found', 'remotiq-partners'); ?>
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mb-8">
           <?php

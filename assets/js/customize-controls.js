@@ -104,9 +104,19 @@
         return;
       }
 
+      var pageUrls =
+        (typeof remotiqCustomizerScroll !== 'undefined' &&
+          remotiqCustomizerScroll.pageUrls) ||
+        {};
+      var pageUrl = pageUrls[componentId];
+
+      if (pageUrl && wp.customize.previewer && wp.customize.previewer.previewUrl) {
+        wp.customize.previewer.previewUrl.set(pageUrl);
+      }
+
       window.setTimeout(function () {
         scrollPreviewTo(selector);
-      }, 300);
+      }, pageUrl ? 600 : 300);
     });
   }
 

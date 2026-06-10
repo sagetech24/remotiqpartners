@@ -59,7 +59,7 @@ $card_text_style = sprintf('color: %s;', $talents_card_text_color);
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <?php foreach ($cards as $card) : ?>
-      <article class="rounded-lg p-4 lg:p-6 text-left shadow-[0_12px_24px_-10px_rgba(237,32,36,0.55)]" style="<?php echo esc_attr($card_style); ?>">
+      <article class="rounded-lg p-10 lg:p-8 text-left shadow-[0_12px_24px_-10px_rgba(237,32,36,0.55)]" style="<?php echo esc_attr($card_style); ?>">
         <p class="text-[10px] font-thin tracking-widest uppercase" style="<?php echo esc_attr($card_label_style); ?>"><?php echo esc_html($card['label']); ?></p>
         <h3 class="font-bold lg:text-xl text-2xl mb-3" style="<?php echo esc_attr($card_title_style); ?>"><?php echo esc_html($card['title']); ?></h3>
         <p class="text-sm leading-relaxed" style="<?php echo esc_attr($card_text_style); ?>"><?php echo esc_html($card['text']); ?></p>

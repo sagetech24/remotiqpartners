@@ -1348,6 +1348,250 @@ function remotiq_customize_register(WP_Customize_Manager $wp_customize): void
         'section' => 'remotiq_cta_options',
     ]));
 
+    $wp_customize->add_section('remotiq_partner_with_us_options', [
+        'title' => __('Partner With Us Options', 'remotiq-partners'),
+        'panel' => 'remotiq_theme_options',
+        'priority' => 65,
+    ]);
+
+    $wp_customize->add_setting('remotiq_partner_hero_bg_color', [
+        'default' => '#ED2024',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ]);
+
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'remotiq_partner_hero_bg_color', [
+        'label' => __('Hero Background Color', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+    ]));
+
+    $wp_customize->add_setting('remotiq_partner_hero_kicker', [
+        'default' => "Let's Work Together",
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_partner_hero_kicker', [
+        'label' => __('Hero Kicker', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_partner_hero_title', [
+        'default' => 'Partner With Us',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_partner_hero_title', [
+        'label' => __('Hero Title', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_partner_hero_description', [
+        'default' => "Tell us about your business and we'll reach out within 24 hours to explore how we can grow together.",
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_partner_hero_description', [
+        'label' => __('Hero Description', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+        'type' => 'textarea',
+    ]);
+
+    $wp_customize->add_setting('remotiq_partner_content_bg_color', [
+        'default' => '#F8F9FA',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ]);
+
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'remotiq_partner_content_bg_color', [
+        'label' => __('Content Section Background Color', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+    ]));
+
+    $wp_customize->add_setting('remotiq_partner_content_heading_prefix', [
+        'default' => 'Why Partner with',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_partner_content_heading_prefix', [
+        'label' => __('Content Heading Prefix', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_partner_content_heading_highlight', [
+        'default' => 'RemotIQ',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_partner_content_heading_highlight', [
+        'label' => __('Content Heading Highlight', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_partner_content_intro', [
+        'default' => 'We build every partnership on trust, transparency, and accountability — so you can scale with confidence and a team that shares your values.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_partner_content_intro', [
+        'label' => __('Content Intro Text', 'remotiq-partners'),
+        'section' => 'remotiq_partner_with_us_options',
+        'type' => 'textarea',
+    ]);
+
+    $partner_cards = [
+        1 => ['title' => 'Purpose-led relationships', 'text' => "We don't just fill seats. We match values, culture, and long-term vision for sustainable growth."],
+        2 => ['title' => 'Fast turnaround', 'text' => 'Expect an initial response within 24 hours. We respect your time as much as your trust.'],
+    ];
+
+    foreach ($partner_cards as $index => $card) {
+        $wp_customize->add_setting("remotiq_partner_card_{$index}_title", [
+            'default' => $card['title'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ]);
+
+        $wp_customize->add_control("remotiq_partner_card_{$index}_title", [
+            'label' => sprintf(__('Card %d Title', 'remotiq-partners'), $index),
+            'section' => 'remotiq_partner_with_us_options',
+            'type' => 'text',
+        ]);
+
+        $wp_customize->add_setting("remotiq_partner_card_{$index}_text", [
+            'default' => $card['text'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ]);
+
+        $wp_customize->add_control("remotiq_partner_card_{$index}_text", [
+            'label' => sprintf(__('Card %d Text', 'remotiq-partners'), $index),
+            'section' => 'remotiq_partner_with_us_options',
+            'type' => 'textarea',
+        ]);
+    }
+
+    $wp_customize->add_section('remotiq_join_us_options', [
+        'title' => __('Join Us Options', 'remotiq-partners'),
+        'panel' => 'remotiq_theme_options',
+        'priority' => 66,
+    ]);
+
+    $wp_customize->add_setting('remotiq_join_hero_bg_color', [
+        'default' => '#ED2024',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ]);
+
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'remotiq_join_hero_bg_color', [
+        'label' => __('Hero Background Color', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+    ]));
+
+    $wp_customize->add_setting('remotiq_join_hero_kicker', [
+        'default' => 'Join the Movement',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_join_hero_kicker', [
+        'label' => __('Hero Kicker', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_join_hero_title', [
+        'default' => 'Built for Talents, Too',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_join_hero_title', [
+        'label' => __('Hero Title', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_join_hero_description', [
+        'default' => "We're more than an employer — we're a community that invests in your growth, embraces your culture, and creates spaces where you belong. Take your first step here.",
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_join_hero_description', [
+        'label' => __('Hero Description', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+        'type' => 'textarea',
+    ]);
+
+    $wp_customize->add_setting('remotiq_join_content_bg_color', [
+        'default' => '#F8F9FA',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ]);
+
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'remotiq_join_content_bg_color', [
+        'label' => __('Content Section Background Color', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+    ]));
+
+    $wp_customize->add_setting('remotiq_join_content_heading_prefix', [
+        'default' => 'Why Join',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_join_content_heading_prefix', [
+        'label' => __('Content Heading Prefix', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_join_content_heading_highlight', [
+        'default' => 'RemotIQ',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_join_content_heading_highlight', [
+        'label' => __('Content Heading Highlight', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('remotiq_join_content_intro', [
+        'default' => 'We go beyond staffing — every engagement is built on trust, accountability, and a genuine commitment to creating lasting value for your business and your people.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('remotiq_join_content_intro', [
+        'label' => __('Content Intro Text', 'remotiq-partners'),
+        'section' => 'remotiq_join_us_options',
+        'type' => 'textarea',
+    ]);
+
+    $join_cards = [
+        1 => ['title' => 'Learn together', 'text' => 'Access to continuous learning resources and mentorship at every stage.'],
+        2 => ['title' => 'Own your journey', 'text' => 'We give you visibility, tools, and pride in your craft.'],
+        3 => ['title' => 'Every voice matters', 'text' => "Inclusion isn't a policy here — it's who we are."],
+        4 => ['title' => 'Rise together', 'text' => 'Grow your reputation, help others, and build a career worth having.'],
+    ];
+
+    foreach ($join_cards as $index => $card) {
+        $wp_customize->add_setting("remotiq_join_card_{$index}_title", [
+            'default' => $card['title'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ]);
+
+        $wp_customize->add_control("remotiq_join_card_{$index}_title", [
+            'label' => sprintf(__('Card %d Title', 'remotiq-partners'), $index),
+            'section' => 'remotiq_join_us_options',
+            'type' => 'text',
+        ]);
+
+        $wp_customize->add_setting("remotiq_join_card_{$index}_text", [
+            'default' => $card['text'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ]);
+
+        $wp_customize->add_control("remotiq_join_card_{$index}_text", [
+            'label' => sprintf(__('Card %d Text', 'remotiq-partners'), $index),
+            'section' => 'remotiq_join_us_options',
+            'type' => 'textarea',
+        ]);
+    }
+
     $wp_customize->add_section('remotiq_footer_options', [
         'title' => __('Footer Options', 'remotiq-partners'),
         'panel' => 'remotiq_theme_options',
@@ -1573,7 +1817,22 @@ function remotiq_customizer_scroll_targets(): array
         'remotiq_stewardship_options' => '#stewardship',
         'remotiq_talents_options' => '#were-hiring',
         'remotiq_cta_options' => '#partner-with-us',
+        'remotiq_partner_with_us_options' => '#partner-page-hero',
+        'remotiq_join_us_options' => '#join-page-hero',
         'remotiq_footer_options' => '#footer',
+    ];
+}
+
+/**
+ * Maps Customizer section IDs to page preview URLs (non-homepage sections).
+ *
+ * @return array<string, string>
+ */
+function remotiq_customizer_page_preview_urls(): array
+{
+    return [
+        'remotiq_partner_with_us_options' => remotiq_page_url('partner-with-us'),
+        'remotiq_join_us_options' => remotiq_page_url('join-us'),
     ];
 }
 
@@ -1589,6 +1848,7 @@ function remotiq_customize_controls_enqueue_scripts(): void
 
     wp_localize_script('remotiq-customize-controls', 'remotiqCustomizerScroll', [
         'targets' => remotiq_customizer_scroll_targets(),
+        'pageUrls' => remotiq_customizer_page_preview_urls(),
     ]);
 }
 add_action('customize_controls_enqueue_scripts', 'remotiq_customize_controls_enqueue_scripts');
