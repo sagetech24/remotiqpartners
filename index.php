@@ -2,49 +2,59 @@
 
 get_header();
 
-$hero_kicker = __('RemotIQ Partners', 'remotiq-partners');
-$hero_title = __('News & Updates', 'remotiq-partners');
-$hero_description = __('Stories, insights, and announcements from our team.', 'remotiq-partners');
+$page_kicker = __('RemotIQ Partners', 'remotiq-partners');
+$page_title = __('News & Updates', 'remotiq-partners');
+$page_description = __('Stories, insights, and announcements from our team.', 'remotiq-partners');
 
 if (is_search()) {
-    $hero_kicker = __('Search Results', 'remotiq-partners');
+    $page_kicker = __('Search Results', 'remotiq-partners');
     /* translators: %s: search query */
-    $hero_title = sprintf(__('Results for "%s"', 'remotiq-partners'), get_search_query());
-    $hero_description = '';
+    $page_title = sprintf(__('Results for "%s"', 'remotiq-partners'), get_search_query());
+    $page_description = '';
 } elseif (is_category() || is_tag() || is_tax()) {
-    $hero_kicker = __('Archive', 'remotiq-partners');
-    $hero_title = single_term_title('', false);
-    $hero_description = term_description() ? wp_strip_all_tags(term_description()) : '';
+    $page_kicker = __('Archive', 'remotiq-partners');
+    $page_title = single_term_title('', false);
+    $page_description = term_description() ? wp_strip_all_tags(term_description()) : '';
 } elseif (is_author()) {
-    $hero_kicker = __('Author', 'remotiq-partners');
-    $hero_title = get_the_author();
-    $hero_description = '';
+    $page_kicker = __('Author', 'remotiq-partners');
+    $page_title = get_the_author();
+    $page_description = '';
 } elseif (is_date()) {
-    $hero_kicker = __('Archive', 'remotiq-partners');
+    $page_kicker = __('Archive', 'remotiq-partners');
     if (is_year()) {
-        $hero_title = get_the_date('Y');
+        $page_title = get_the_date('Y');
     } elseif (is_month()) {
-        $hero_title = get_the_date('F Y');
+        $page_title = get_the_date('F Y');
     } else {
-        $hero_title = get_the_date();
+        $page_title = get_the_date();
     }
-    $hero_description = '';
+    $page_description = '';
 } elseif (is_home() && !is_front_page()) {
     $posts_page_id = (int) get_option('page_for_posts');
     if ($posts_page_id > 0) {
-        $hero_title = get_the_title($posts_page_id);
-        $hero_description = has_excerpt($posts_page_id) ? wp_strip_all_tags(get_the_excerpt($posts_page_id)) : $hero_description;
+        $page_title = get_the_title($posts_page_id);
+        $page_description = has_excerpt($posts_page_id) ? wp_strip_all_tags(get_the_excerpt($posts_page_id)) : $page_description;
     }
 }
-
-get_template_part('template-parts/sections/page-hero', null, [
-    'kicker' => $hero_kicker,
-    'title' => wp_specialchars_decode($hero_title),
-    'description' => $hero_description,
-]);
 ?>
-<section class="bg-[#F8F9FA] py-12 lg:py-24">
+<section class="bg-[#F8F9FA] pt-28 lg:pt-36 pb-12 lg:pb-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="mb-10 lg:mb-14 max-w-3xl">
+      <?php if ($page_kicker !== '') : ?>
+        <p class="text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-brand-red mb-3 lg:mb-4">
+          <?php echo esc_html($page_kicker); ?>
+        </p>
+      <?php endif; ?>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark leading-tight mb-4 lg:mb-5">
+        <?php echo esc_html(wp_specialchars_decode($page_title)); ?>
+      </h1>
+      <?php if ($page_description !== '') : ?>
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+          <?php echo esc_html($page_description); ?>
+        </p>
+      <?php endif; ?>
+    </header>
+
     <?php if (have_posts()) : ?>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
         <?php
@@ -72,7 +82,13 @@ get_template_part('template-parts/sections/page-hero', null, [
     <?php else : ?>
       <div class="max-w-xl mx-auto text-center py-12 lg:py-16">
         <p class="text-2xl font-bold text-brand-dark mb-3">
-          <?php esc_html_e('Page Not Found', 'remotiq-partners'); ?>
+          <?php
+          if (is_search()) {
+              esc_html_e('No results found', 'remotiq-partners');
+          } else {
+              esc_html_e('No posts yet', 'remotiq-partners');
+          }
+          ?>
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mb-8">
           <?php

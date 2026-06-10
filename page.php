@@ -7,14 +7,13 @@ get_header();
 
 while (have_posts()) {
     the_post();
-
-    get_template_part('template-parts/sections/page-hero', null, [
-        'kicker' => remotiq_site_name(),
-        'title' => get_the_title(),
-        'description' => has_excerpt() ? wp_strip_all_tags(get_the_excerpt()) : '',
-    ]);
-
-    get_template_part('template-parts/content/page-body');
+    ?>
+    <main class="w-full min-h-[25vh] py-12 lg:py-24">
+      <article <?php post_class('remotiq-page-content w-full'); ?>>
+        <?php the_content(); ?>
+      </article>
+    </main>
+    <?php
 }
 
 get_footer();
